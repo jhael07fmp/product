@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-slate-200;
+}
+
+.btn-save {
+  @apply m-auto flex p-2 mb-3 rounded-sm mt-10 bg-green-500 hover:bg-green-600
+   active:scale-95 active:transition transition outline-none text-white;
+}
+
+.container {
+  &-main {
+    @apply w-11/12 m-auto grid mt-1.5 p-3 border border-gray-300 rounded-sm pb-12 bg-white;
+  }
+
+  &-without {
+    @apply w-11/12 m-auto grid mt-1.5 p-3 border border-gray-300 rounded-sm pb-12 bg-white;
+  }
+}
+
+.encabezado {
+  @apply text-2xl font-medium text-gray-700 mt-3 ml-10 mb-1;
+}
+
+p,
+h1,
+h2,
+h3 {
+  @apply text-gray-800;
+}

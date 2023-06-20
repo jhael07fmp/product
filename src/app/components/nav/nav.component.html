@@ -1,0 +1,17 @@
+<nav class="bg-white p-2 flex justify-between z-50 w-full shadow-md">
+  <div class="items-center flex ml-3 gap-2">
+    <p class="text-xl font-bold text-gray-500">Product Store</p>
+    <span class="mb-0.5">⭐</span>
+  </div>
+  <ul class="flex gap-3 mr-5">
+    <a
+      *ngFor="let option of navOptions"
+      routerLink="{{ option.path }}"
+      [routerLinkActiveOptions]="{ exact: true }"
+      routerLinkActive="active"
+      class="p-2 border-transparent border-2 text-neutral-500 hover:cursor-pointer rounded-sm transition hover:border-b-blue-600 active:scale-95"
+    >
+      {{ option.name }}
+    </a>
+  </ul>
+</nav>

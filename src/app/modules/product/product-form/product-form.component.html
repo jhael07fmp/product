@@ -1,0 +1,53 @@
+<app-nav></app-nav>
+<div class="container-without bg-transparent border-none">
+  <h1 class="encabezado">Add new Products</h1>
+  <!--  Este es el formulario -->
+  <div class="form__container shadow-lg">
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="form">
+      <div class="form__input-container">
+        <label class="form__label">Name:</label>
+        <input
+          type="text"
+          class="form__input"
+          placeholder="Product's name"
+          formControlName="name"
+        />
+        <p
+          class="absolute mt-14 text-xs text-red-600"
+          *ngIf="productForm.invalid && productForm.touched"
+        >
+          Name is required
+        </p>
+      </div>
+      <div class="form__input-container">
+        <label class="form__label">Description:</label>
+        <input
+          type="text"
+          class="form__input"
+          placeholder="Product's description"
+          formControlName="description"
+        />
+      </div>
+
+      <div class="form__input-container">
+        <label class="form__label">Image URL:</label>
+        <input
+          type="text"
+          class="form__input"
+          placeholder="Product image url"
+          formControlName="imgUrl"
+        />
+      </div>
+      <button
+        [disabled]="!productForm.valid || isBeenSubmitted"
+        class="btn disabled:outline-none disabled:shadow-none shadow-md outline-blue-400 outline bg-transparent transition hover:transition hover:outline-transparent hover:bg-blue-500 w-4/6 flex m-auto hover:text-white rounded"
+      >
+        Add Product
+      </button>
+    </form>
+  </div>
+  <app-toast
+    [message]="'🎉 New product has been added.'"
+    [submitted]="submitted"
+  ></app-toast>
+</div>

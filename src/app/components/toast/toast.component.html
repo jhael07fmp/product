@@ -1,0 +1,32 @@
+<div class="toast toast-top toast-end border-none">
+  <div
+    *ngIf="submitted"
+    class="alert flex text-white shadow-md border-transparent border-r-0 border-t-0 border-b-0 border-l-[14px] border-l-green-700 mt-10 font-medium bg-green-500 transition-opacity"
+    [ngClass]="!submitted ? 'translate-x-8  opacity-0 ' : 'opacity-100'"
+    [ngStyle]=""
+    style="
+      border-radius: 4px;
+      box-shadow: 2px -58px 60px -46px hsla(159, 87%, 6%, 0.16) inset;
+      -webkit-box-shadow: 2px -58px 60px -46px hsla(159, 87%, 6%, 0.16) inset;
+      -moz-box-shadow: 2px -58px 60px -46px hsla(159, 87%, 6%, 0.16) inset;
+    "
+  >
+    <span> {{ message }}</span>
+    <button class="btn btn-circle btn-outline btn-xs" (click)="closeToast()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-4 w-4"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </div>
+</div>

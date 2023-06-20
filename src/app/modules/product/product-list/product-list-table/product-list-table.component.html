@@ -1,0 +1,112 @@
+<div class="product__table" style="width: 80dvw !important">
+  <div
+    *ngIf="isLoading"
+    class="absolute mx-auto flex justify-center z-50"
+    style="width: 75dvw"
+  >
+    <app-loader
+      [isLoading]="isLoading"
+      [message]="'Obteniendo productos, espere un momento.'"
+    ></app-loader>
+  </div>
+
+  <dialog
+    id="deleteModal"
+    class="p-5 border-none rounded-md backdrop-blur-sm outline-none mt-16 shadow-2xl justify-center"
+  >
+    <div
+      *ngIf="isLoading"
+      class="mx-auto w-11/12 justify-center mt-32 flex absolute z-50"
+    >
+      <app-loader
+        [isLoading]="isLoading"
+        [message]="'Eliminando el producto, espere un momento.'"
+      ></app-loader>
+    </div>
+    <div class="deleteModal__content p-7">
+      <h2 class="text-2xl text-gray-800 font-semibold mb-4">
+        ¿Estas seguro de eliminar el producto
+        <span class="p-0.5"> {{ productInfo.name }}</span
+        >?
+      </h2>
+      <p
+        class="text-xs font-semibold rounded w-fit flex mx-auto mt-4 text-red-600"
+      >
+        Esta accion no puede ser revertida
+      </p>
+      <div class="w-64 h-64 flex mx-auto">
+        <img
+          [src]="productInfo.imgUrl"
+          class="m-auto w-fit flex mask mask-square"
+          style="aspect-ratio: 3/2; object-fit: contain"
+        />
+      </div>
+
+      <div class="w-2/4 flex m-auto mt-6 justify-center gap-6">
+        <button
+          class="btn btn-md outline-none bg-red-500 text-white hover:bg-red-600"
+          (click)="deleteProduct(productInfo.id)"
+          [disabled]="isLoading"
+        >
+          Aceptar
+        </button>
+        <button
+          class="btn btn-md outline-none"
+          onclick="deleteModal.close()"
+          [disabled]="isLoading"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="overflow-x-auto flex m-auto">
+    <table class="table">
+      <!-- head -->
+      <thead>
+        <tr class="text-base text-center">
+          <th>Name</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <!-- body -->
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td class="product__table-col">{{ item.name | uppercase }}</td>
+          <td class="product__table-col">{{ item.description }}</td>
+          <td class="w-2/12 text-center justify-center">
+            <div class="flex items-center space-x-3 text-center">
+              <div class="avatar flex">
+                <div class="m-auto justify-items-center w-32 flex-auto">
+                  <img
+                    [src]="item.imgUrl"
+                    class="m-auto flex w-12 mask mask-square"
+                    style="aspect-ratio: 3/2; object-fit: contain"
+                  />
+                </div>
+              </div>
+            </div>
+          </td>
+          <th
+            class="w-full text-center justify-center flex gap-3 items-center h-32"
+          >
+            <!--  Este es el icono para editar -->
+            <fa-icon
+              [icon]="editIcon"
+              class="text-xl text-gray-800 hover:cursor-pointer hover:text-cyan-500"
+            ></fa-icon>
+            <!--  Este es el icono para eliminar -->
+            <fa-icon
+              (click)="showDeleteModal(item)"
+              [icon]="trashIcon"
+              class="text-xl delete-btn active:scale-90 transition-all text-gray-800 hover:cursor-pointer hover:text-red-500"
+            ></fa-icon>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

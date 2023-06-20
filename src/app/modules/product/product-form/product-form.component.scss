@@ -1,0 +1,30 @@
+.form {
+  @apply grid justify-center  gap-4 gap-y-11 pt-8;
+
+  &__input {
+    border-radius: 5px;
+    @apply p-2 outline-none focus:placeholder:text-transparent   bg-white  border 
+    sm:w-64 lg:w-64 md:w-full xl:w-72 w-full border-gray-300 focus:border-blue-400
+     hover:bg-slate-50 hover:transition hover:border-transparent pl-3 transition;
+  }
+
+  &__label {
+    @apply absolute mb-16 pb-1.5 text-xs font-semibold text-gray-500;
+  }
+
+  &__container {
+    @apply rounded-md mt-3.5 border-2  sm:w-6/12 md:w-5/12 xl:w-4/12 w-11/12 m-auto bg-white  border-slate-200 p-6;
+  }
+
+  &__input-container {
+    @apply grid gap-3 items-center  w-full;
+  }
+}
+
+input.ng-invalid.ng-touched {
+  @apply border-red-600 bg-red-100;
+}
+
+input.ng-invalid.ng-touched::placeholder {
+  @apply text-red-800;
+}
